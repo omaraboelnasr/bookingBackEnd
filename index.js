@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const userRoutes = require("./UsersModule/userRoutes");
+const hotelsRoutes = require('./HotelsModule/hotelRoutes');
+const roomRoutes = require('./RoomsModule/roomRoutes');
 const app = express();
 const port = 3090;
 app.listen(port, () => {
@@ -21,6 +23,8 @@ app.use(
 );
 app.use(express.json());
 app.use("/user", userRoutes);
+app.use('/hotels',hotelsRoutes)
+app.use('/rooms',roomRoutes)
 app.use("*", (req, res, next) => {
 	res.status(404).json({ message: "Not Found" });
 });
