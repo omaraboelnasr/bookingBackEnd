@@ -26,6 +26,11 @@ const HotelSchema = mongoose.Schema({
         type:Number,
         required:[true,'distance from center is required']
     },
+    hotelType:{
+        type:String,
+        required:[true,'type is required'],
+        enum: ['hotel','apartment','resort','villa']
+    },
     hotelRating:{
         type:String,
     }

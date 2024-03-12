@@ -9,12 +9,8 @@ const port = 3090;
 app.listen(port, () => {
 	console.log("listening on port 3090");
 });
-// محدش يقرب على الداتا بيز دي بتاعاتي انا xD
-// mongoose.connect(
-// 	"mongodb+srv://mostafaqaraman:QsHg3cf2ujKCESjW@practice.lopcdmd.mongodb.net/?retryWrites=true&w=majority&appName=Practice"
-// );
 mongoose.connect(
-	"mongodb+srv://Mostafa:z6CDgVmIAMhPg7Ra@inprogress.tycr07f.mongodb.net/Booking?retryWrites=true&w=majority&appName=InProgress"
+	"mongodb+srv://Omar:KJmJyg9WirD5zUY1@inprogress.tycr07f.mongodb.net/Booking?retryWrites=true&w=majority&appName=InProgress"
 );
 app.use(
 	cors({
