@@ -9,6 +9,13 @@ const HotelSchema = mongoose.Schema({
         type:String,
         required:[true,'hotel description is required']
     },
+    hotelSubDescription:{
+        type:String,
+        required:[true,'hotel subdescription is required'],
+        minLength: 15,
+		maxLength: 150,
+    }
+    ,
     hotelMainImage:{
         type:String,
         required:[true,'hotel image is required']
