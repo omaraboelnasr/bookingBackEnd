@@ -17,7 +17,7 @@ const userSchema = mongoose.Schema(
 			},
 			unique: true,
 		},
-		username: {
+		userName: {
 			type: String,
 			//   unique: [true, "username have to be unique"], "removed because if we add another user without a username it will throw an error due to username = null"
 			minLength: [5, "username have to be more than 5 char"],

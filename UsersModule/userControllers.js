@@ -31,6 +31,7 @@ const updateUserById = async (req, res, next) => {
 	let body = req.body;
 	let { id } = req.params;
 	try {
+		console.log(body);
 		const updatedUser = await userModel.findByIdAndUpdate(id, body, {
 			new: true,
 			runValidator: true,
@@ -82,7 +83,11 @@ const login = async function (req, res, next) {
 		{ expiresIn: "4h" }
 	);
 	res.set("Authorization", `Bearer ${token}`);
-	res.status(200).json({ token: token });
+	res.status(200).json({
+		token: token,
+		email: user.email,
+		userName: user.userName,
+	});
 };
 module.exports = {
 	register,
