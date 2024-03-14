@@ -82,7 +82,11 @@ const login = async function (req, res, next) {
 		{ expiresIn: "4h" }
 	);
 	res.set("Authorization", `Bearer ${token}`);
-	res.status(200).json({ token: token });
+	res.status(200).json({
+		token: token,
+		email: user.email,
+		userName: user.userName,
+	});
 };
 module.exports = {
 	register,
