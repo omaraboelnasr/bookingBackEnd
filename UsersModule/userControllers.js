@@ -90,6 +90,7 @@ const login = async function (req, res, next) {
 		process.env.SECRET,
 		{ expiresIn: "4h" }
 	);
+	res.set("Authorization", `Bearer ${token}`);
 	res.status(200).json({
 		token: token,
 		email: user.email,
