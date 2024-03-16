@@ -11,7 +11,7 @@ app.listen(port, () => {
 	console.log("listening on port 3090");
 });
 mongoose.connect(
-	"mongodb+srv://Omar:KJmJyg9WirD5zUY1@inprogress.tycr07f.mongodb.net/Booking?retryWrites=true&w=majority&appName=InProgress"
+	"mongodb+srv://Mostafa:z6CDgVmIAMhPg7Ra@inprogress.tycr07f.mongodb.net/Booking?retryWrites=true&w=majority&appName=InProgress"
 );
 app.use(
 	cors({
