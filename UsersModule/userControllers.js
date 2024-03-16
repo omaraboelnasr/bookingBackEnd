@@ -31,7 +31,6 @@ const updateUserById = async (req, res, next) => {
 	let body = req.body;
 	let { id } = req.params;
 	try {
-		console.log(body);
 		const updatedUser = await userModel.findByIdAndUpdate(id, body, {
 			new: true,
 			runValidator: true,
