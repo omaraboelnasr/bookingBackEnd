@@ -17,6 +17,7 @@ const userSchema = mongoose.Schema(
 			},
 			unique: true,
 		},
+		// no need for userName as it's not used for login , and we can use the firs part of the mail as userName 
 		userName: {
 			type: String,
 			//   unique: [true, "username have to be unique"], "removed because if we add another user without a username it will throw an error due to username = null"
@@ -47,7 +48,7 @@ const userSchema = mongoose.Schema(
 			enum: ["male", "female"],
 		},
 		dob: {
-			type: Date,
+			type: String,
 		},
 		owner: {
 			type: Boolean,
