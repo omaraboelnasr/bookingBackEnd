@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-const userSchema = mongoose.Schema(
+const adminSchema = mongoose.Schema(
 	{
 		email: {
 			type: String,
@@ -16,52 +16,40 @@ const userSchema = mongoose.Schema(
 			},
 			unique: true,
 		},
-		userName: {
-			type: String,
-			//   unique: [true, "username have to be unique"], "removed because if we add another user without a username it will throw an error due to username = null"
-			minLength: [5, "username have to be more than 5 char"],
-		},
 		password: {
 			type: String,
 			required: [true, "password is required"],
 			minLength: 3,
 		},
+		userName: {
+			type: String,
+			unique: true,
+			required: [true, "username is required"],
+			minLength: [5, "username have to be more than 5 char"],
+		},
 		firstName: {
 			type: String,
 			minLength: 3,
 			maxLength: 15,
+			required: [true, "firstname is required"],
 		},
 		lastName: {
 			type: String,
 			minLength: 3,
 			maxLength: 15,
-		},
-		phone: {
-			type: Number,
-			minLength: 11,
-			maxLength: 11,
-		},
-		Gender: {
-			type: String,
-			enum: ["male", "female"],
-		},
-		dob: {
-			type: Date,
-		},
-		owner: {
-			type: Boolean,
-			default: false,
+			required: [true, "lastname is required"],
 		},
 	},
-	{ timestamps: true, collection: "user" }
+	{ timestamps: true, collection: "admin" }
 );
 
-userSchema.pre("save", function (next) {
+adminSchema.pre("save", function (next) {
 	var salt = bcrypt.genSaltSync(10);
 	var hash = bcrypt.hashSync(this.password, salt);
 	this.password = hash;
 	next();
 });
-const userModel = mongoose.model("user", userSchema);
 
-module.exports = userModel;
+const adminModel = mongoose.model("admin", adminSchema);
+
+module.exports = adminModel;
