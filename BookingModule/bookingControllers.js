@@ -13,6 +13,33 @@ const createBooking = async (req, res, next) => {
 	}
 };
 
+const getAllBookings = async (req, res, next) => {
+	try {
+		let bookings = await bookingsModel.find();
+		res.status(201).json({
+			message: "there is all bookings",
+			data: bookings,
+		});
+	} catch (err) {
+		res.status(500).json({ message: err.message });
+	}
+};
+
+const getBookingsForUser = async (req, res, next) => {
+	const userId = req.params.id;
+	try {
+		let bookings = await bookingsModel.find({ userId: userId });
+		res.status(201).json({
+			message: "there is all bookings",
+			data: bookings,
+		});
+	} catch (err) {
+		res.status(500).json({ message: err.message });
+	}
+};
+
 module.exports = {
 	createBooking,
+	getAllBookings,
+	getBookingsForUser,
 };
