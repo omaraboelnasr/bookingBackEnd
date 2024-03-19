@@ -20,7 +20,7 @@ router.use("/users", adminAuthentication);
 router.route("/users").get(getAllUsers);
 router
 	.route("/users/:id")
-	.patch(adminAuthorization, updateUserById)
+	// .patch(adminAuthorization, updateUserById)
 	.delete(adminAuthorization, deleteUserById);
 
 // Hotels Routes

@@ -18,7 +18,7 @@ const register = async (req, res, next) => {
 
 const getAllUsers = (req, res, next) => {
 	userModel
-		.find({}, "firstName")
+		.find({}, "-password")
 		.then((users) => {
 			res.status(200).json({ data: users });
 		})

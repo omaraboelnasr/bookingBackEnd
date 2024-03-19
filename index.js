@@ -13,9 +13,11 @@ app.listen(port, () => {
 mongoose.connect(
 	"mongodb+srv://Mostafa:z6CDgVmIAMhPg7Ra@inprogress.tycr07f.mongodb.net/Booking?retryWrites=true&w=majority&appName=InProgress"
 );
+
+const allowedOrigins = ["http://localhost:5173", "http://localhost:4200"];
 app.use(
 	cors({
-		origint: "http://localhost:5173",
+		origint: allowedOrigins,
 	})
 );
 app.use(express.json());
