@@ -62,7 +62,7 @@ const updateRoom = async (req, res, next) => {
 };
 
 const deleteRoom = async (req, res, next) => {
-	let roomId = req.params.roomID;
+	let roomId = req.params.id;
 	try {
 		let deletedRoom = await roomsModel.findByIdAndDelete(roomId);
 		res.status(200).json({

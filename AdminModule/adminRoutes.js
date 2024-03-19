@@ -12,6 +12,7 @@ router.route("/login").post(login);
 
 // Users Routes
 const {
+	getUser,
 	getAllUsers,
 	updateUserById,
 	deleteUserById,
@@ -20,7 +21,8 @@ router.use("/users", adminAuthentication);
 router.route("/users").get(getAllUsers);
 router
 	.route("/users/:id")
-	// .patch(adminAuthorization, updateUserById)
+	.get(adminAuthorization, getUser)
+	.patch(adminAuthorization, updateUserById)
 	.delete(adminAuthorization, deleteUserById);
 
 // Hotels Routes
