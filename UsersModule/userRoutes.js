@@ -7,13 +7,14 @@ const {
 	updateUserById,
 	deleteUserById,
 	login,
+	getUser
 } = require("./userControllers");
 
-router.route("/").post(register).get(getAllUsers);
-router
-	.route("/:id")
-	.patch(checkUserIdInToken, updateUserById)
-	.delete(checkUserIdInToken, deleteUserById);
+router.post("/", register)
+router.get("/profile",checkUserIdInToken,getUser);
+router.get("/",checkUserIdInToken,getAllUsers);
+router.patch("/:id",checkUserIdInToken,updateUserById);
+router.delete("/:id",checkUserIdInToken,deleteUserById);
 router.post("/login", login);
 
 module.exports = router;

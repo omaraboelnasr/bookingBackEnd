@@ -46,7 +46,7 @@ const userSchema = mongoose.Schema(
 			enum: ["male", "female"],
 		},
 		dob: {
-			type: Date,
+			type: String,
 		},
 		owner: {
 			type: Boolean,
