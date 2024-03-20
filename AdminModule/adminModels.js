@@ -39,6 +39,11 @@ const adminSchema = mongoose.Schema(
 			maxLength: 15,
 			required: [true, "lastname is required"],
 		},
+		role: {
+			type: String,
+			enum: ["admin", "moderator"],
+			required: [true, "role is required"],
+		},
 	},
 	{ timestamps: true, collection: "admin" }
 );
