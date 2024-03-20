@@ -12,12 +12,20 @@ const createHotel = async (req,res,next)=>{
 
 const getAllHotel = async (req,res,next)=>{
     try{
-            let allHotels = await hotelModel.find()
+            const filter = getFilter(req.query)
+            let allHotels = await hotelModel.find(filter)
             res.status(201).json({message:'there is all hotels',data:allHotels})
     }catch(err){
         res.status(500).json(err.message)
     }
 }
+
+const getFilter = (query)=>{
+    const filter = {}
+    if(query.city) {filter.hotelCity = query.city} 
+    return filter;
+}
+
 
 const getHotel = async (req,res,next)=>{
     const {id} = req.params;
@@ -25,20 +33,6 @@ const getHotel = async (req,res,next)=>{
             let hotel = await hotelModel.findById(id)
             if(hotel){
                 res.status(201).json({message:'that is hotel',data:hotel})
-            }else{
-                res.status(400).json({ message: "Not Found" })
-            }
-    }catch(err){
-        res.status(500).json(err.message)
-    }
-}
-
-const getHotelByCity = async (req,res,next)=>{
-    const {city} = req.params;
-    try{
-            let hotel = await hotelModel.find({hotelCity:city})
-            if(hotel.length>0){
-                res.status(201).json({message:'that is hotels',data:hotel})
             }else{
                 res.status(400).json({ message: "Not Found" })
             }
@@ -68,4 +62,4 @@ const deleteHotel = async (req,res,next)=>{
     }
 }
 
-module.exports={createHotel,getAllHotel,getHotel,updateHotel,deleteHotel,getHotelByCity}
+module.exports={createHotel,getAllHotel,getHotel,updateHotel,deleteHotel}
