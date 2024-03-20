@@ -6,6 +6,7 @@ const hotelsRoutes = require("./HotelsModule/hotelRoutes");
 const roomRoutes = require("./RoomsModule/roomRoutes");
 const adminRoutes = require("./AdminModule/adminRoutes");
 const bookingRoutes = require("./BookingModule/bookingRoutes");
+
 const app = express();
 const port = 3090;
 app.listen(port, () => {
