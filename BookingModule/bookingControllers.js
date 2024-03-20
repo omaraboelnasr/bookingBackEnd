@@ -15,7 +15,13 @@ const createBooking = async (req, res, next) => {
 
 const getAllBookings = async (req, res, next) => {
 	try {
-		let bookings = await bookingsModel.find();
+		let bookings = await bookingsModel.find().populate({
+			path: "userId roomId",
+			populate: {
+				path: "hotelId",
+				strictPopulate: false,
+			},
+		});
 		res.status(201).json({
 			message: "there is all bookings",
 			data: bookings,
