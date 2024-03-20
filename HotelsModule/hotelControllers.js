@@ -33,6 +33,20 @@ const getHotel = async (req,res,next)=>{
     }
 }
 
+const getHotelByCity = async (req,res,next)=>{
+    const {city} = req.params;
+    try{
+            let hotel = await hotelModel.find({hotelCity:city})
+            if(hotel.length>0){
+                res.status(201).json({message:'that is hotels',data:hotel})
+            }else{
+                res.status(400).json({ message: "Not Found" })
+            }
+    }catch(err){
+        res.status(500).json(err.message)
+    }
+}
+
 const updateHotel = async (req,res,next)=>{
     let body = req.body;
     let { id } = req.params
@@ -54,4 +68,4 @@ const deleteHotel = async (req,res,next)=>{
     }
 }
 
-module.exports={createHotel,getAllHotel,getHotel,updateHotel,deleteHotel}
+module.exports={createHotel,getAllHotel,getHotel,updateHotel,deleteHotel,getHotelByCity}

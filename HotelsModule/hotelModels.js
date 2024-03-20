@@ -23,7 +23,7 @@ const HotelSchema = mongoose.Schema({
     hotelCity:{
         type:String,
         required:[true,'hotel city is required'],
-        enum: ['cairo','hurghada','alexandria','sharm el sheikh','dahab']
+        enum: ['cairo','hurghada','alexandria','sharmelsheikh','dahab']
     },
     hotelAddress:{
         type:String,
