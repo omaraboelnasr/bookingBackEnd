@@ -5,6 +5,7 @@ const userRoutes = require("./UsersModule/userRoutes");
 const hotelsRoutes = require("./HotelsModule/hotelRoutes");
 const roomRoutes = require("./RoomsModule/roomRoutes");
 const adminRoutes = require("./AdminModule/adminRoutes");
+const bookingRoutes = require("./BookingModule/bookingRoutes");
 const app = express();
 const port = 3090;
 app.listen(port, () => {
@@ -25,6 +26,7 @@ app.use("/user", userRoutes);
 app.use("/hotels", hotelsRoutes);
 app.use("/rooms", roomRoutes);
 app.use("/admin", adminRoutes);
+app.use("/booking", bookingRoutes);
 app.use("*", (req, res, next) => {
 	res.status(404).json({ message: "Not Found" });
 });

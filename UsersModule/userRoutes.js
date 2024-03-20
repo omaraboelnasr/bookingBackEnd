@@ -12,7 +12,7 @@ const {
 
 router.post("/", register);
 router.get("/profile", checkUserIdInToken, getUser);
-router.get("/", checkUserIdInToken, getAllUsers);
+router.get("/", getAllUsers);
 router.patch("/:id", checkUserIdInToken, updateUserById);
 router.delete("/:id", checkUserIdInToken, deleteUserById);
 router.post("/login", login);
