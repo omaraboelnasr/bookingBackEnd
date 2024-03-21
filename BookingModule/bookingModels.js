@@ -7,11 +7,13 @@ const BookingSchema = mongoose.Schema(
 			ref: "user",
 			required: [true, "Insert user Id"],
 		},
-		room: {
-			type: mongoose.SchemaTypes.ObjectId,
-			ref: "rooms",
-			required: [true, "Insert room Id"],
-		},
+		room: [
+			{
+				type: mongoose.SchemaTypes.ObjectId,
+				ref: "rooms",
+				required: [true, "Insert room Id"],
+			},
+		],
 		guests: {
 			type: Number,
 			required: [true, "Insert guest number"],
@@ -23,6 +25,10 @@ const BookingSchema = mongoose.Schema(
 		checkOut: {
 			type: String,
 			required: [true, "Insert check out date"],
+		},
+		totalPrice: {
+			type: Number,
+			required: [true, "Insert total price"],
 		},
 	},
 	{ timestamps: true, collection: "bookings" }

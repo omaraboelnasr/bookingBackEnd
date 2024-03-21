@@ -16,9 +16,10 @@ const createBooking = async (req, res, next) => {
 const getAllBookings = async (req, res, next) => {
 	try {
 		let bookings = await bookingsModel.find().populate({
-			path: "userId roomId",
+			path: "user room",
 			populate: {
 				path: "hotelId",
+				select: "hotelName",
 				strictPopulate: false,
 			},
 		});
