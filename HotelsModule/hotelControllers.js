@@ -12,12 +12,20 @@ const createHotel = async (req,res,next)=>{
 
 const getAllHotel = async (req,res,next)=>{
     try{
-            let allHotels = await hotelModel.find()
+            const filter = getFilter(req.query)
+            let allHotels = await hotelModel.find(filter)
             res.status(201).json({message:'there is all hotels',data:allHotels})
     }catch(err){
         res.status(500).json(err.message)
     }
 }
+
+const getFilter = (query)=>{
+    const filter = {}
+    if(query.city) {filter.hotelCity = query.city} 
+    return filter;
+}
+
 
 const getHotel = async (req,res,next)=>{
     const {id} = req.params;
