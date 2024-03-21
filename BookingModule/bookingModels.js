@@ -2,16 +2,18 @@ const mongoose = require("mongoose");
 
 const BookingSchema = mongoose.Schema(
 	{
-		userId: {
+		user: {
 			type: mongoose.SchemaTypes.ObjectId,
-			ref: "users",
+			ref: "user",
 			required: [true, "Insert user Id"],
 		},
-		roomId: {
-			type: mongoose.SchemaTypes.ObjectId,
-			ref: "rooms",
-			required: [true, "Insert room Id"],
-		},
+		room: [
+			{
+				type: mongoose.SchemaTypes.ObjectId,
+				ref: "rooms",
+				required: [true, "Insert room Id"],
+			},
+		],
 		guests: {
 			type: Number,
 			required: [true, "Insert guest number"],
@@ -23,6 +25,10 @@ const BookingSchema = mongoose.Schema(
 		checkOut: {
 			type: String,
 			required: [true, "Insert check out date"],
+		},
+		totalPrice: {
+			type: Number,
+			required: [true, "Insert total price"],
 		},
 	},
 	{ timestamps: true, collection: "bookings" }
