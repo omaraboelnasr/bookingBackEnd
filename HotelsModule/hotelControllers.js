@@ -22,10 +22,11 @@ const getAllHotel = async (req, res, next) => {
 
 const getFilter = (query) => {
     const filter = {}
-    if (query.city) { filter.hotelCity = query.city }
+    if (query.city) {
+        filter.hotelCity = query.city
+    }
     return filter;
 }
-
 
 const getHotel = async (req, res, next) => {
     const { id } = req.params;
@@ -61,5 +62,8 @@ const deleteHotel = async (req, res, next) => {
         res.status(500).json(err.message)
     }
 }
+
+
+
 
 module.exports = { createHotel, getAllHotel, getHotel, updateHotel, deleteHotel }

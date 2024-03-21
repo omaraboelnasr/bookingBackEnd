@@ -4,7 +4,7 @@ const userModel = require("./userModels");
 require("dotenv").config();
 
 const register = async (req, res, next) => {
-	let {email , password} = req.body;
+	const {email , password} = req.body;
 	try {
 		const userName = email.split("@")[0];
 		let newUser = await userModel.create({email , password , userName});
@@ -95,7 +95,8 @@ const login = async function (req, res, next) {
 		token: token,
 		email: user.email,
 		userName: user.userName,
-		userId : user.id
+		userId : user.id,
+		active:user.active
 	});
 };
 module.exports = {
