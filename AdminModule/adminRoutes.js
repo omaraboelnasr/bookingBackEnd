@@ -58,6 +58,13 @@ router
 	.delete(adminAuthorization, deleteRoom);
 
 // Bookings Routes
+const {
+	createBooking,
+	getAllBookings,
+	getBookingsForUser,
+} = require("../BookingModule/bookingControllers");
 router.use("/bookings", adminAuthentication);
+router.route("/bookings").get(adminAuthorization, getAllBookings);
+router.route("/bookings/user/:id").get(adminAuthorization, getBookingsForUser);
 
 module.exports = router;

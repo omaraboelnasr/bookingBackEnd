@@ -4,10 +4,10 @@ const userModel = require("./userModels");
 require("dotenv").config();
 
 const register = async (req, res, next) => {
-	const {email , password} = req.body;
+	const { email, password } = req.body;
 	try {
 		const userName = email.split("@")[0];
-		let newUser = await userModel.create({email , password , userName});
+		let newUser = await userModel.create({ email, password, userName });
 		res.status(201).json({
 			message: "User Saved Successfully",
 			data: newUser,
@@ -28,13 +28,12 @@ const getAllUsers = (req, res, next) => {
 		});
 };
 
-
 const getUser = async (req, res, next) => {
-	const userId = req.userId
-	const user = await userModel.findById(userId)
-	res.status(200).send(user)
+	const { id } = req.params;
+	const user = await userModel.findById(id);
+	console.log(user);
+	res.status(200).send(user);
 };
-
 
 const updateUserById = async (req, res, next) => {
 	let body = req.body;
@@ -95,8 +94,8 @@ const login = async function (req, res, next) {
 		token: token,
 		email: user.email,
 		userName: user.userName,
-		userId : user.id,
-		active:user.active
+		userId: user.id,
+		active: user.active,
 	});
 };
 module.exports = {
@@ -105,5 +104,5 @@ module.exports = {
 	updateUserById,
 	deleteUserById,
 	login,
-	getUser
+	getUser,
 };
