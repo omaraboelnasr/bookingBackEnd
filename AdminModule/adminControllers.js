@@ -46,6 +46,7 @@ const login = async (req, res) => {
 		res.set("Authorization", `Bearer ${token}`);
 		res.status(200).json({
 			token: token,
+			userName: admin.userName,
 		});
 	} catch (err) {
 		res.status(500).json({ message: err.message });
