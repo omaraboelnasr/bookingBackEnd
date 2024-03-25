@@ -35,6 +35,12 @@ const getUser = async (req, res, next) => {
 	res.status(200).send(user);
 };
 
+const getUserProfile = async (req, res, next) => {
+	const  id  = req.userId;
+	const user = await userModel.findById(id);
+	res.status(200).send(user);
+};
+
 const updateUserById = async (req, res, next) => {
 	let body = req.body;
 	let { id } = req.params;
@@ -105,4 +111,5 @@ module.exports = {
 	deleteUserById,
 	login,
 	getUser,
+	getUserProfile
 };
