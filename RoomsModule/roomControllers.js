@@ -2,15 +2,14 @@ const roomsModel = require("./roomModels");
 const hotelModel = require("../HotelsModule/hotelModels");
 
 const createRoom = async (req, res, next) => {
-	let room = req.body;
-	let hotelId = req.params.id;
-	room.hotelId = hotelId;
+	const room = req.body;
+	const hotelID = req.params.id;
 	try {
-		const hotelData = await hotelModel.findById(hotelId);
+		const hotelData = await hotelModel.findById(hotelID);
 		if (!hotelData) {
 			return res.status(404).json({ message: "hotel not found" });
 		}
-		let newRoom = await roomsModel.create(room);
+		const newRoom = await roomsModel.create({ ...room, hotelId: hotelID });
 		res.status(201).json({
 			message: "room add successfully",
 			data: newRoom,
@@ -21,14 +20,14 @@ const createRoom = async (req, res, next) => {
 };
 
 const getAllRooms = async (req, res, next) => {
-	let hotelId = req.params.id;
+	const hotelId = req.params.id;
 	try {
 		const hotelData = await hotelModel.findById(hotelId);
 		if (!hotelData) {
 			return res.status(404).json({ message: "hotel not found" });
 		}
-		let allRooms = await roomsModel.find({ hotelId });
-		res.status(201).json({ message: "there is all rooms", data: allRooms });
+		const allRooms = await roomsModel.find({ hotelId });
+		res.status(200).json({ message: "there is all rooms", data: allRooms });
 	} catch (err) {
 		res.status(500).json(err.message);
 	}
