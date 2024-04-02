@@ -7,11 +7,11 @@ const {
 	updateUserById,
 	deleteUserById,
 	login,
-	getUser,
+	getUserProfile
 } = require("./userControllers");
 
 router.post("/", register);
-router.get("/profile", checkUserIdInToken, getUser);
+router.get("/profile", checkUserIdInToken, getUserProfile);
 router.patch("/:id", checkUserIdInToken, updateUserById);
 router.delete("/:id", checkUserIdInToken, deleteUserById);
 router.post("/login", login);

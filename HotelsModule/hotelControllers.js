@@ -33,9 +33,9 @@ const getHotel = async (req, res, next) => {
     try {
         let hotel = await hotelModel.findById(id)
         if (hotel) {
-            res.status(201).json({ message: 'that is hotel', data: hotel })
+            res.status(200).json({ message: 'that is hotel', data: hotel })
         } else {
-            res.status(400).json({ message: "Not Found" })
+            res.status(404).json({ message: "Not Found" })
         }
     } catch (err) {
         res.status(500).json(err.message)
