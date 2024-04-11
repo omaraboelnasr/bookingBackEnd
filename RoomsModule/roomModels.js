@@ -8,12 +8,12 @@ const RoomSchema = mongoose.Schema(
 		},
 		roomType: {
 			type: String,
-			enum: ["single room", "double room", "triple room"],
+			enum: ["Single Room", "Double Room", "Triple Room"],
 			required: true,
 		},
 		bedType: {
 			type: String,
-			enum: ["single bed", "double beds"],
+			enum: ["Single Bed", "Double Beds"],
 			required: true,
 		},
 		guestNumber: {
