@@ -21,7 +21,7 @@ const getAllUsers = (req, res, next) => {
 	userModel
 		.find({}, "-password")
 		.then((users) => {
-			res.status(200).json({ data: users });
+			res.status(200).json({ message: "Hello", data: users });
 		})
 		.catch((err) => {
 			res.status(500).json({ message: err.message });
@@ -36,7 +36,7 @@ const getUser = async (req, res, next) => {
 };
 
 const getUserProfile = async (req, res, next) => {
-	const  id  = req.userId;
+	const id = req.userId;
 	const user = await userModel.findById(id);
 	res.status(200).send(user);
 };
@@ -111,5 +111,5 @@ module.exports = {
 	deleteUserById,
 	login,
 	getUser,
-	getUserProfile
+	getUserProfile,
 };
