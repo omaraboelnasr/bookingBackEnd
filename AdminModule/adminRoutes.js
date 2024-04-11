@@ -44,12 +44,14 @@ router
 const {
 	createRoom,
 	getAllRooms,
+	getAllRoomsForHotel,
 	getRoom,
 	updateRoom,
 	deleteRoom,
 } = require("../RoomsModule/roomControllers");
 
-router.route("/hotels/rooms/:id").post(createRoom).get(getAllRooms);
+router.route("/hotels/rooms/:id").post(createRoom).get(getAllRoomsForHotel);
+router.route("/hotels/rooms").get(getAllRooms);
 
 router
 	.route("/hotels/room/:id")

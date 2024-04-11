@@ -20,6 +20,19 @@ const createRoom = async (req, res, next) => {
 };
 
 const getAllRooms = async (req, res, next) => {
+	try {
+		const allRooms = await roomsModel.find().populate({
+			path: "hotelId",
+			select: "hotelName",
+			strictPopulate: false,
+		});
+		res.status(200).json({ message: "there is all rooms", data: allRooms });
+	} catch (err) {
+		res.status(500).json(err.message);
+	}
+};
+
+const getAllRoomsForHotel = async (req, res, next) => {
 	const hotelId = req.params.id;
 	try {
 		const hotelData = await hotelModel.findById(hotelId);
@@ -73,4 +86,11 @@ const deleteRoom = async (req, res, next) => {
 	}
 };
 
-module.exports = { createRoom, getAllRooms, getRoom, updateRoom, deleteRoom };
+module.exports = {
+	createRoom,
+	getAllRooms,
+	getAllRoomsForHotel,
+	getRoom,
+	updateRoom,
+	deleteRoom,
+};
