@@ -102,6 +102,7 @@ const login = async function (req, res, next) {
 		userName: user.userName,
 		userId: user.id,
 		active: user.active,
+		owner: user.owner,
 	});
 };
 module.exports = {
