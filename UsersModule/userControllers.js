@@ -21,7 +21,7 @@ const getAllUsers = (req, res, next) => {
 	userModel
 		.find({}, "-password")
 		.then((users) => {
-			res.status(200).json({ data: users });
+			res.status(200).json({ message: "Hello", data: users });
 		})
 		.catch((err) => {
 			res.status(500).json({ message: err.message });
