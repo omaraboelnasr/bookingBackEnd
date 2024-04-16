@@ -14,6 +14,10 @@ const HotelSchema = mongoose.Schema(
 			type: String,
 			required: [true, "hotel description is required"],
 		},
+		hotelDescription_ar: {
+			type: String,
+			required: [true, "hotel description is required in arabic"],
+		},
 		hotelSubDescription: {
 			type: String,
 			required: [true, "hotel subdescription is required"],
@@ -22,7 +26,7 @@ const HotelSchema = mongoose.Schema(
 		},
 		hotelSubDescription_ar: {
 			type: String,
-			required: [true, "hotel subdescription is required"],
+			required: [true, "hotel subdescription is required in arabic"],
 
 			minLength: 15,
 			maxLength: 150,
