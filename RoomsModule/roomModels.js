@@ -26,6 +26,10 @@ const RoomSchema = mongoose.Schema(
 			max: [100000, "your price must be little than 100000$"],
 			required: true,
 		},
+		approved: {
+			type: Boolean,
+			default: true,
+		},
 	},
 	{ collcetion: "rooms" }
 );
