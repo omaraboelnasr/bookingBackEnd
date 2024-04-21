@@ -22,9 +22,13 @@ const getAllHotel = async (req, res, next) => {
 
 const getFilter = (query) => {
     const filter = {}
-    if (query.city) {
         filter.hotelCity = query.city
-    }
+        if(query.hotelRating !== undefined){
+            filter.hotelRating = query.hotelRating
+        }
+        if(query.hotelTypes !== undefined){
+            filter.hotelType = query.hotelTypes
+        }
     return filter;
 }
 

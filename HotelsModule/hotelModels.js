@@ -72,6 +72,8 @@ const HotelSchema = mongoose.Schema(
 		},
 		hotelRating: {
 			type: Number,
+			required:[true, "rating is required"],
+			enum: [1,2,3,4,5]
 		},
 		review: {
 			type: String,
