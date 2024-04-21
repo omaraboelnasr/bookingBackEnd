@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 const HotelSchema = mongoose.Schema(
 	{
+		owner: {
+			type: mongoose.SchemaTypes.ObjectId,
+			ref: "users",
+		},
 		hotelName: {
 			type: String,
 			required: [true, "hotel name is required"],
@@ -72,12 +76,16 @@ const HotelSchema = mongoose.Schema(
 		},
 		hotelRating: {
 			type: Number,
-			required:[true, "rating is required"],
-			enum: [1,2,3,4,5]
+			required: [true, "rating is required"],
+			enum: [1, 2, 3, 4, 5],
+		},
+		approved: {
+			type: Boolean,
+			default: true,
 		},
 		review: {
 			type: String,
-		}
+		},
 	},
 	{ collcetion: "hotles" }
 );
