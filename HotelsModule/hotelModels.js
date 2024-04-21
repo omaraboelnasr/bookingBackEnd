@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const HotelSchema = mongoose.Schema(
 	{
 		owner: {
@@ -76,16 +75,20 @@ const HotelSchema = mongoose.Schema(
 			type: Number,
 		},
 		hotelRating: {
-			type: String,
+			type: Number,
+			required: [true, "rating is required"],
+			enum: [1, 2, 3, 4, 5],
 		},
 		approved: {
 			type: Boolean,
 			default: true,
 		},
+		review: {
+			type: String,
+		},
 	},
 	{ collcetion: "hotles" }
 );
-
 const hotelsModel = mongoose.model("hotels", HotelSchema);
 
 module.exports = hotelsModel;

@@ -29,6 +29,7 @@ router
 const {
 	createHotel,
 	getAllHotel,
+	getAllHotelDashboard,
 	getHotel,
 	updateHotel,
 	deleteHotel,

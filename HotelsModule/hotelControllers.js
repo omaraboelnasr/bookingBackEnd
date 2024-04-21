@@ -13,6 +13,22 @@ const createHotel = async (req, res, next) => {
 	}
 };
 
+const getAllHotelDashboard = async (req, res, next) => {
+	try {
+		let allHotels = await hotelModel.find();
+		res.status(201).json({
+			message: "there is all hotels",
+			data: allHotels,
+		});
+	} catch (err) {
+		if (err.name === "ValidationError") {
+			res.status(400).json({ message: err.message });
+		} else {
+			res.status(500).json(err.message);
+		}
+	}
+};
+
 const getAllHotel = async (req, res, next) => {
 	try {
 		const filter = getFilter(req.query);
@@ -32,8 +48,12 @@ const getAllHotel = async (req, res, next) => {
 
 const getFilter = (query) => {
 	const filter = {};
-	if (query.city) {
-		filter.hotelCity = query.city;
+	filter.hotelCity = query.city;
+	if (query.hotelRating !== undefined) {
+		filter.hotelRating = query.hotelRating;
+	}
+	if (query.hotelTypes !== undefined) {
+		filter.hotelType = query.hotelTypes;
 	}
 	return filter;
 };
@@ -99,6 +119,7 @@ const deleteHotel = async (req, res, next) => {
 module.exports = {
 	createHotel,
 	getAllHotel,
+	getAllHotelDashboard,
 	getHotel,
 	getHotelByOwner,
 	updateHotel,
