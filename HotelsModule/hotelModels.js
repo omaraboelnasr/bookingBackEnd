@@ -25,14 +25,12 @@ const HotelSchema = mongoose.Schema(
 			type: String,
 			required: [true, "hotel subdescription is required"],
 			minLength: 15,
-			maxLength: 150,
 		},
 		hotelSubDescription_ar: {
 			type: String,
 			required: [true, "hotel subdescription is required in arabic"],
 
 			minLength: 15,
-			maxLength: 150,
 		},
 
 		hotelMainImage: {
