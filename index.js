@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -8,9 +9,9 @@ const adminRoutes = require("./AdminModule/adminRoutes");
 const bookingRoutes = require("./BookingModule/bookingRoutes");
 
 const app = express();
-const port = 3090;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-	console.log("listening on port 3090");
+	console.log(`listening on port ${port}`);
 });
 mongoose.connect(
 	"mongodb+srv://Mostafa:z6CDgVmIAMhPg7Ra@inprogress.tycr07f.mongodb.net/Booking?retryWrites=true&w=majority&appName=InProgress"
